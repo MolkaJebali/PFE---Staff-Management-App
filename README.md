@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/badge/XGBoost-ML-3498DB?style=for-the-badge&logo=python&logoColor=white"/>
 <img src="https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white"/>
 
-# 🐝 BeeGrowth — Staff Management & Performance Piloting Platform
+# Biware — Staff Management & Performance Piloting Platform
 
 > **End-of-Degree Project (PFE) — Licence · Mention Très Bien**
 > Biware Consulting · Tunis, Tunisia · February – June 2025
@@ -30,13 +30,13 @@ A full-stack intelligent staffing platform combining a **dimensional Data Wareho
 - [Backend — Spring Boot](#-backend--spring-boot)
 - [Getting Started](#-getting-started)
 - [Project Structure](#-project-structure)
-- [Authors](#-authors)
+
 
 ---
 
 ## 🔭 Overview
 
-**BeeGrowth** was designed and built in a pair during a 5-month internship at **Biware Consulting** to address the company's need for a centralised, data-driven staffing management system. The platform covers the full analytical lifecycle:
+**This App** was designed and built in a pair during a 5-month internship at **Biware Consulting** to address the company's need for a centralised, data-driven staffing management system. The platform covers the full analytical lifecycle:
 
 1. **Data ingestion** from Excel files and the operational database via SSIS ETL pipelines.
 2. **Storage** in a 3-layer dimensional Data Warehouse hosted on SQL Server.
