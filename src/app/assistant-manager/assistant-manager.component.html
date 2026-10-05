@@ -1,0 +1,305 @@
+<div class="min-h-screen bg-gradient-to-br from-white to-orange-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="Images/Logo Biware.png" alt="Logo Biware" class="h-14">
+        <h1 class="text-2xl font-bold text-gray-800 ml-4 ai-gradient-text">
+          Assistant Manager IA
+        </h1>
+      </div>
+      
+      <div class="flex items-center gap-3">
+        <app-notification-button></app-notification-button>
+        <a routerLink="/manager-home" class="flex items-center gap-2 bg-orange-100 hover:bg-orange-200 text-orange-700 font-medium px-4 py-2 rounded-lg transition-all duration-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Retour à l'accueil
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto p-6">
+    <!-- Error Display -->
+    <div *ngIf="hasError" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+      <div class="flex items-center">
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+        </svg>
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <!-- Dashboard Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-8">
+      <!-- Total Employees -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Employés Totaux</p>
+            <p class="text-2xl font-bold text-gray-900">{{ dashboardMetrics.totalEmployees || 0 }}</p>
+          </div>
+          <div class="p-3 bg-blue-100 rounded-full">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Projects -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Projets Actifs</p>
+            <p class="text-2xl font-bold text-gray-900">{{ dashboardMetrics.activeProjects || 0 }}</p>
+          </div>
+          <div class="p-3 bg-green-100 rounded-full">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Completed Tasks -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Tâches Terminées</p>
+            <p class="text-2xl font-bold text-gray-900">{{ dashboardMetrics.completedTasks || 0 }}</p>
+          </div>
+          <div class="p-3 bg-purple-100 rounded-full">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Average Productivity -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Productivité Moy.</p>
+            <p class="text-2xl font-bold text-gray-900">{{ (dashboardMetrics.averageProductivity || 0).toFixed(1) }}%</p>
+          </div>
+          <div class="p-3 bg-yellow-100 rounded-full">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Deadlines -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Échéances Prochaines</p>
+            <p class="text-2xl font-bold text-gray-900">{{ dashboardMetrics.upcomingDeadlines || 0 }}</p>
+          </div>
+          <div class="p-3 bg-red-100 rounded-full">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource Utilization -->
+      <div class="dashboard-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Util. Ressources</p>
+            <p class="text-2xl font-bold text-gray-900">{{ (dashboardMetrics.resourceUtilization || 0).toFixed(1) }}%</p>
+          </div>
+          <div class="p-3 bg-indigo-100 rounded-full">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chat Interface -->
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <div class="bg-gradient-to-r from-orange-500 to-amber-600 p-6 text-white">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <div class="ai-notification mr-3">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold">Assistant IA Manager</h2>
+              <p class="text-orange-100">Analysez, optimisez et gérez votre équipe avec l'IA</p>
+            </div>
+          </div>
+          <button (click)="refreshData()" class="p-2 text-white hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages -->
+      <div class="chat-container">
+        <div class="messages-area h-96 overflow-y-auto p-6 space-y-4">
+          <div *ngFor="let message of messages" class="flex" [ngClass]="{'justify-end': message.isUser, 'justify-start': !message.isUser}">
+            <div class="message-bubble max-w-md px-4 py-3 rounded-2xl" 
+                 [ngClass]="{
+                   'bg-gradient-to-r from-orange-500 to-amber-600 text-white': message.isUser,
+                   'insight-message': !message.isUser && message.type === 'insight',
+                   'suggestion-message': !message.isUser && message.type === 'suggestion',
+                   'chart-message': !message.isUser && message.type === 'chart',
+                   'bg-gray-100 text-gray-800': !message.isUser && message.type === 'normal'
+                 }">
+              <div>
+                <p class="text-sm">{{ message.text }}</p>
+                <p class="text-xs mt-1 opacity-70">{{ formatTime(message.timestamp) }}</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Typing Indicator -->
+          <div *ngIf="isTyping" class="flex justify-start">
+            <div class="message-bubble bg-gray-100 px-4 py-3 rounded-2xl">
+              <div class="flex items-center space-x-1">
+                <div class="animate-bounce w-2 h-2 bg-gray-500 rounded-full"></div>
+                <div class="animate-bounce w-2 h-2 bg-gray-500 rounded-full" style="animation-delay: 0.1s;"></div>
+                <div class="animate-bounce w-2 h-2 bg-gray-500 rounded-full" style="animation-delay: 0.2s;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="border-t border-gray-200 p-4">
+          <div class="flex space-x-3">
+            <textarea 
+                [(ngModel)]="newMessage"
+                (keydown)="onKeyDown($event)"
+                placeholder="Posez une question sur votre équipe..."
+                class="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+                rows="2"></textarea>
+            <button 
+                (click)="sendMessage()"
+                [disabled]="newMessage.trim() === '' || isTyping"
+                class="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-lg hover:from-orange-600 hover:to-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+<br><br>
+      <!-- Quick Actions -->
+      <div class="bg-gray-50 p-6 border-t border-gray-200">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">Actions Rapides</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <button *ngFor="let action of quickActions" 
+              (click)="useQuickAction(action)"
+              class="quick-action-btn flex flex-col items-center p-4 bg-white hover:bg-orange-50 border border-gray-200 hover:border-orange-300 rounded-lg transition-all duration-200 text-center">
+            <span class="text-2xl mb-2">{{ action.icon }}</span>
+            <span class="text-xs font-medium text-gray-700">{{ action.label }}</span>
+          </button>
+          
+          <!-- Add ML Prediction Button -->
+          <button (click)="openPredictionModal()"
+              class="quick-action-btn flex flex-col items-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 border border-blue-200 hover:border-blue-300 rounded-lg transition-all duration-200 text-center">
+            <span class="text-2xl mb-2">🤖</span>
+            <span class="text-xs font-medium text-blue-700">Prédiction ML</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading Indicator -->
+      <div *ngIf="isLoadingMetrics || isLoadingAnalysis" class="mt-6 p-4 bg-gray-50 rounded-lg">
+        <div class="loading-insights h-4 rounded"></div>
+        <p class="text-sm text-gray-600 mt-2">Analyse en cours...</p>
+      </div>
+    </div>
+
+    <!-- Prediction Modal -->
+    <div *ngIf="showPredictionModal" class="modal-overlay" (click)="closePredictionModal()">
+      <div class="prediction-modal" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3>🤖 Prédiction ML des heures planifiées</h3>
+          <button class="close-btn" (click)="closePredictionModal()">×</button>
+        </div>
+        
+        <form [formGroup]="predictionForm" (ngSubmit)="submitPrediction()">
+          <div class="form-group">
+            <label for="project">Projet *</label>
+            <input type="text" id="project" formControlName="project" 
+                   placeholder="ex: Site e-commerce" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="task">Tâche *</label>
+            <input type="text" id="task" formControlName="task" 
+                   placeholder="ex: Implémenter système de paiement" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="typeTask">Type de tâche *</label>
+            <select id="typeTask" formControlName="typeTask" required>
+              <option value="">Sélectionner un type</option>
+              <option value="Development">💻 Développement</option>
+              <option value="Testing">🧪 Test</option>
+              <option value="Design">🎨 Design</option>
+              <option value="Analysis">📊 Analyse</option>
+              <option value="Documentation">📝 Documentation</option>
+              <option value="DevOps">⚙️ DevOps</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="priority">Priorité *</label>
+            <select id="priority" formControlName="priority" required>
+              <option value="">Sélectionner une priorité</option>
+              <option value="Haute">🔴 Haute</option>
+              <option value="Moyenne">🟡 Moyenne</option>
+              <option value="Basse">🟢 Basse</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="delayDays">Délai (jours) *</label>
+            <input type="number" id="delayDays" formControlName="delayDays" 
+                   placeholder="ex: 5" min="1" max="30" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="comment">Commentaires additionnels</label>
+            <textarea id="comment" formControlName="comment" 
+                      placeholder="Détails supplémentaires, technologies utilisées, complexité..." rows="3"></textarea>
+          </div>
+          
+          <div class="ml-info">
+            <p class="text-sm text-gray-600">
+              🎯 <strong>Modèle XGBoost</strong> - Précision: ±5.45h | Basé sur {{ dashboardMetrics.completedTasks || 0 }}+ tâches analysées
+            </p>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" (click)="closePredictionModal()">
+              Annuler
+            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="!predictionForm.valid || isPredicting">
+              <span *ngIf="!isPredicting">🤖 Prédire les heures</span>
+              <span *ngIf="isPredicting">⏳ Prédiction en cours...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

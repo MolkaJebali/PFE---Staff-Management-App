@@ -1,0 +1,233 @@
+<!-- Header avec logo et nouvelle icône -->
+<header class="bg-white shadow-sm py-4 px-6 sticky top-0 z-50 w-full">
+  <div class="max-w-8xl mx-auto flex justify-between items-center">
+    <!-- Logo Biware -->
+    <div class="flex items-center">
+      <img src="Images/Logo Biware.png" alt="Logo Biware" class="h-14">
+    </div>
+    
+    <!-- Titre avec icône "liste de tâches" -->
+    <h1 class="text-2xl font-bold text-gray-800 ml-4 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+      <span class="text-gray-700">
+        Gestion des missions des employés
+      </span>
+    </h1>
+    
+    <!-- Actions -->
+    <div class="flex items-center gap-3">
+      <!-- Fonctionnalités Dropdown -->
+      <div class="relative features-dropdown-container mr-3">
+        <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center gap-1" (click)="toggleFeaturesDropdown($event)" title="Fonctionnalités">
+          <span>Fonctionnalités</span>
+          <svg class="h-4 w-4 transition-transform duration-200" [class.rotate-180]="showFeaturesDropdown" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        
+        <!-- Dropdown menu -->
+        <div *ngIf="showFeaturesDropdown" class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg z-50 border border-gray-100 py-2">
+          <a routerLink="/dashboard" class="block px-4 py-2 hover:bg-gray-50 transition-colors flex items-center gap-2 text-gray-700">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+            Tableau de bord
+          </a>
+          <a routerLink="/manager-suivi" class="block px-4 py-2 hover:bg-gray-50 transition-colors flex items-center gap-2 text-gray-700">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            Suivi des équipes
+          </a>
+          <a routerLink="/assistant-manager" class="block px-4 py-2 hover:bg-gray-50 transition-colors flex items-center gap-2 text-gray-700">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+            Assistant Manager
+          </a>
+          <a routerLink="/manager-sheet" class="block px-4 py-2 hover:bg-gray-50 transition-colors flex items-center gap-2 text-gray-700">
+            <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Planification
+          </a>
+        </div>
+      </div>
+
+      <!-- Bouton Retour -->
+      <a routerLink="/manager-home" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-4 py-2 rounded-lg transition-all duration-200 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        Retour à l'accueil
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="p-6 max-w-screen-xl mx-auto">
+  <h1 class="text-3xl font-bold mb-6 flex items-center">
+    <span class="text-gray-800">
+      📋 Feuilles de temps des employés
+    </span>
+  </h1>
+
+  <!-- Filtres -->
+  <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6 bg-white p-4 rounded-xl shadow-sm">
+    <div class="relative flex-grow">
+      <input
+        type="text"
+        placeholder="Rechercher une tâche, employé..."
+        class="input input-bordered w-full p-3 pl-10 rounded-lg border-gray-200 focus:border-amber-400 focus:ring-2 focus:ring-amber-50"
+        [(ngModel)]="searchTerm"
+      />
+      <span class="absolute left-3 top-3.5 text-gray-400">🔍</span>
+    </div>
+
+    <select class="select select-bordered p-3 rounded-lg border-gray-200 focus:border-amber-400 focus:ring-2 focus:ring-amber-50" [(ngModel)]="selectedWeek">
+      <option value="">Toutes les semaines</option>
+      <option *ngFor="let week of availableWeeks" [value]="week">Semaine du {{ week }}</option>
+    </select>
+
+    <select class="select select-bordered p-3 rounded-lg border-gray-200 focus:border-amber-400 focus:ring-2 focus:ring-amber-50" [(ngModel)]="selectedProject">
+      <option value="">Tous les projets</option>
+      <option *ngFor="let project of projects" [value]="project">{{ project }}</option>
+    </select>
+    
+    <button 
+      (click)="refreshData()" 
+      class="bg-amber-100 text-amber-700 px-4 py-2 rounded-lg transition-colors hover:bg-amber-200 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+      Actualiser
+    </button>
+  </div>
+
+  <!-- État de chargement -->
+  <div *ngIf="loading" class="text-center py-10 text-gray-500 bg-white rounded-xl shadow-sm">
+    <div class="flex justify-center items-center">
+      <svg class="animate-spin -ml-1 mr-3 h-8 w-8 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      <span class="text-lg">Chargement des données...</span>
+    </div>
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="error" class="text-center py-10 text-red-500 bg-white rounded-xl shadow-sm">
+    <div class="flex flex-col justify-center items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+      </svg>
+      <span>{{ error }}</span>
+      <button (click)="refreshData()" class="mt-4 px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600">Réessayer</button>
+    </div>
+  </div>
+
+  <!-- Résultats -->
+  <div *ngIf="!loading && !error">
+    <!-- No Results Message -->
+    <div *ngIf="!loading && !error && filteredTimesheets.length === 0" class="text-center py-10 text-gray-500 bg-white rounded-xl shadow-sm">
+      Aucune feuille de temps d'employé trouvée.
+    </div>
+
+    <!-- Results -->
+    <div *ngIf="!loading && !error && filteredTimesheets.length > 0" class="grid md:grid-cols-2 gap-4">
+      <div *ngFor="let sheet of filteredTimesheets" (click)="selectSheet(sheet)"
+        class="cursor-pointer border border-gray-100 hover:border-amber-300 hover:shadow-md p-5 rounded-xl bg-gray-50 transition-all duration-200 hover:-translate-y-1">
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-semibold text-gray-800">{{ sheet.employee }}</h3>
+          <span class="text-xs bg-amber-50 text-amber-700 px-2 py-1 rounded-full">Semaine du {{ sheet.week }}</span>
+        </div>
+        <ul class="mt-3 space-y-2">
+          <li *ngFor="let entry of sheet.entries.slice(0,2)" class="text-sm flex items-start">
+            <span class="text-amber-500 mr-2">•</span>
+            <span class="text-gray-700">{{ entry.date }} - {{ entry.task }} <span class="font-medium text-gray-900">({{ entry.hours }}h)</span></span>
+          </li>
+          <li *ngIf="sheet.entries.length > 2" class="text-gray-400 text-sm mt-2">
+            +{{ sheet.entries.length - 2 }} autres tâches...
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Détails -->
+<div *ngIf="selectedTimesheet" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white p-6 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+    <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors" (click)="clearSelection()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    
+    <div class="flex items-center mb-4">
+      <div class="bg-amber-50 p-3 rounded-lg mr-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-gray-800">Détails de la feuille de temps</h2>
+        <p class="text-gray-600">{{ selectedTimesheet.employee }} - Semaine du {{ selectedTimesheet.week }}</p>
+      </div>
+    </div>
+
+    <div class="border rounded-lg overflow-hidden mt-6">
+      <table class="w-full">
+        <thead class="bg-gray-50">
+          <tr class="text-left text-sm font-medium text-gray-500">
+            <th class="p-3 border-b">Date</th>
+            <th class="p-3 border-b">Projet</th>
+            <th class="p-3 border-b">Tâche</th>
+            <th class="p-3 border-b">Type de tâche</th>
+            <th class="p-3 border-b text-right">Heures</th>
+            <th class="p-3 border-b">Commentaire</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr *ngFor="let e of selectedTimesheet.entries" class="text-sm hover:bg-gray-50 transition-colors">
+            <td class="p-3 text-gray-700">{{ e.date }}</td>
+            <td class="p-3 text-gray-700">{{ e.project }}</td>
+            <td class="p-3 font-medium text-gray-900">{{ e.task }}</td>
+            <td class="p-3">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                {{ e.taskType || 'Non spécifié' }}
+              </span>
+            </td>
+            <td class="p-3 text-right text-gray-700">{{ e.hours }}h</td>
+            <td class="p-3 text-gray-500">{{ e.comment || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-100">
+      
+      <button class="bg-blue-500 text-white px-5 py-2.5 rounded-lg shadow-sm hover:bg-blue-600 transition-all flex items-center gap-2" (click)="exportToExcel()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        Export Excel
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-white py-6 px-6 border-t border-gray-100 mt-10">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div class="text-gray-500 text-sm mb-4 md:mb-0">
+      © 2025 Biware Consulting. Tous droits réservés.
+    </div>
+    <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+      <a href="#" class="text-gray-500 hover:text-gray-700 transition-colors text-sm">Conditions d'utilisation</a>
+      <a href="#" class="text-gray-500 hover:text-gray-700 transition-colors text-sm">Politique de confidentialité</a>
+      <a href="#" class="text-gray-500 hover:text-gray-700 transition-colors text-sm">Aide</a>
+      <a href="#" class="text-gray-500 hover:text-gray-700 transition-colors text-sm">Contact</a>
+    </div>
+  </div>
+</footer>

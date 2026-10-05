@@ -1,0 +1,18 @@
+/* Styles spécifiques au carousel */
+.slide-transition {
+    transition: opacity 0.7s ease-in-out;
+  }
+  
+  /* Animation pour les indicateurs */
+  .carousel-indicator {
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Styles pour le dark mode */
+  .dark .carousel-indicator {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .dark .carousel-indicator.active {
+    background-color: rgba(255, 255, 255, 0.7);
+  }

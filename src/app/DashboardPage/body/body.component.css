@@ -1,0 +1,137 @@
+.body-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  .body-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #757575;
+  }
+  
+  .breadcrumb a {
+    color: #F97316;
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+  }
+  
+  .breadcrumb a:hover {
+    color: #EA580C;
+    text-decoration: underline;
+  }
+  
+  .chevron {
+    width: 0.75em;
+    height: 0.75em;
+  }
+  
+  .body-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .body-action {
+    background: white;
+    color: #F97316;
+    border: 1px solid #e0e0e0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  
+  .body-action:hover {
+    background: #F97316;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .iframe-container {
+    width: 100%;
+    height: calc(100vh - 180px);
+    min-height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    background: white;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  /* Dans dashboard.component.css */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #757575;
+  }
+  
+  .breadcrumb a {
+    color: #F97316;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+  }
+  
+  .breadcrumb a:hover {
+    color: #EA580C;
+    text-decoration: underline;
+  }
+  
+  .icon {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+  
+  .chevron {
+    width: 0.75rem;
+    height: 0.75rem;
+    opacity: 0.6;
+  }
+  @media print {
+    body * {
+      visibility: hidden; /* cacher tout */
+    }
+  
+    #dashboard, #dashboard * {
+      visibility: visible; /* sauf le dashboard */
+    }
+  
+    #dashboard {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  }
+  
+  

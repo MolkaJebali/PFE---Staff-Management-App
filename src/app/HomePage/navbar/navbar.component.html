@@ -1,0 +1,75 @@
+<nav class="fixed top-0 left-0 w-full z-50 bg-gray-100 dark:bg-gray-800 backdrop-blur-sm border-b border-orange-200 dark:border-orange-800/50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <div class="flex items-center justify-between h-12">
+      <!-- Logo + Nom -->
+      <div class="flex items-center">
+        <img src="Images/Logo Biware.png" class="h-12 mr-5" alt="Logo Biware">
+        <span class="text-xl font-light text-orange-900 dark:text-orange-100">Manager<span class="font-medium text-orange-600 dark:text-orange-400">Space</span></span>
+      </div>
+
+      <!-- Navigation desktop -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/manager-home" class="text-orange-800 dark:text-orange-200 hover:text-orange-600 dark:hover:text-orange-400 py-2 px-3 font-medium text-lg transition-colors">
+          Accueil
+        </a>
+        
+        <!-- Menu déroulant Fonctionnalités -->
+        <div class="relative group">
+          <button class="text-orange-800 dark:text-orange-200 hover:text-orange-600 dark:hover:text-orange-400 py-2 px-3 font-medium text-lg flex items-center transition-colors">
+            Fonctionnalités
+            <svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          
+          <!-- Dropdown - Maintenant en blanc comme demandé -->
+          <div class="absolute right-0 mt-2 w-56 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-orange-200 dark:ring-gray-700 divide-y divide-gray-200 dark:divide-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <!-- Tableaux de bord -->
+            <a href="/dashboard" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center transition-colors">
+              <svg class="w-4 h-4 mr-2 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+              Tableaux de bord
+            </a>
+            
+            <!-- Gestion d'équipe -->
+            <a href="/manager-suivi" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center transition-colors">
+              <svg class="w-4 h-4 mr-2 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+              Suivi d'équipe
+            </a>
+            
+            <!-- Planification -->
+            <a href="/manager-sheet" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center transition-colors">
+              <svg class="w-4 h-4 mr-2 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Planification
+            </a>
+            
+            <!-- Assistant -->
+            <a href="/assistant-manager" class="block px-4 py-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center transition-colors">
+              <svg class="w-4 h-4 mr-2 text-orange-500 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+              </svg>
+              Assistant Manager
+            </a>
+            <div class="border-t border-gray-200 dark:border-gray-700">
+              <a (click)="logout()" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-red-400 transition flex items-center gap-2">Déconnexion</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu mobile -->
+      <div class="md:hidden">
+        <button class="text-orange-800 dark:text-orange-200 hover:text-orange-600 dark:hover:text-orange-400 focus:outline-none transition-colors">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

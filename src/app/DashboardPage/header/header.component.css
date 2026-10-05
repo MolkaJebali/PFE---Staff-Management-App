@@ -1,0 +1,122 @@
+header {
+    background: white;
+    padding: 0.75rem 2rem;
+    display: flex;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    height: 50px;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }
+  
+  .title-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* to allow it to take up remaining space */
+    margin-left: 190px;
+  }
+  
+  .title-block h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 0.25rem;
+  }
+  
+  .welcome-message {
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .user-badge {
+    background: rgba(249, 115, 22, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: black;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .date-display {
+    font-size: 0.8125rem;
+    color: #757575;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.03);
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .icon-button {
+    background: rgba(249, 115, 22, 0.1);
+    border: none;
+    color: #F97316;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .icon-button:hover {
+    background: rgba(249, 115, 22, 0.2);
+    transform: scale(1.1);
+  }
+  
+  .action-button {
+    background: #d35f0c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background: #EA580C;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transform: translateY(-1px);
+  }
+  
+  .icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
