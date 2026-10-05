@@ -333,24 +333,6 @@ PFE---Staff-Management-App/
 
 ---
 
-## 👩‍💻 Authors
-
-<table>
-  <tr>
-    <td align="center">
-      <strong>Molka Jebali</strong><br/>
-      <sub>Full-Stack Developer · BI Engineer · ML Engineer</sub><br/>
-      <a href="https://github.com/MolkaJebali">GitHub</a>
-    </td>
-    <td align="center">
-      <strong>Dina Ben Hassine</strong><br/>
-      <sub>Full-Stack Developer · BI Engineer · Data Engineer</sub>
-    </td>
-  </tr>
-</table>
-
----
-
 ## 🏢 About the Internship
 
 | | |
